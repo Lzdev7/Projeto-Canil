@@ -1,5 +1,21 @@
 import { Request,Response } from "express";
 
-export const seacher = (req:Request, res: Response) =>{
+import { Pet } from '../models/pet';
+import {  createMenuObject } from '../helpers/createMenuObejct';
 
+export const seacher = (req:Request, res: Response) =>{
+    let query:string = req.query.q as string;
+
+    if(!query){
+        res.redirect('/');
+        return;
+    }
+
+    let list = Pet.getFromName(query);
+
+    res.render('pages/page',{
+        menu:createMenuObject(''),
+        list,
+        query
+    });
 }
