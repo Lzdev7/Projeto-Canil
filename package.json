@@ -3,11 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
+    "start": "node dist/server.js",
+    "postinstall": "tsc && copyfiles -u 1 src/**/*.mustache dist/",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start-dev": "nodemon -e ts,jason,mustache src/server.ts"
   },
-  "author": "",
+  "author": "Luiz Henrique",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.3",
@@ -17,6 +22,7 @@
   "devDependencies": {
     "@types/express": "^4.17.17",
     "@types/mustache-express": "^1.2.2",
-    "@types/node": "^18.15.10"
+    "@types/node": "^18.15.10",
+    "copyfiles": "^2.4.1"
   }
 }
